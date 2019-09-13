@@ -1,6 +1,5 @@
 package Credit
-import org.apache.spark.SparkContext
-import org.apache.spark.SparkConf
+import org.apache.spark.{SparkContext,SparkConf}
 import org.apache.spark.sql.functions.{col, lit, when}
 import org.apache.spark.sql.functions.{min, max}
 import org.apache.spark.sql.Row
