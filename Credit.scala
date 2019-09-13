@@ -4,7 +4,6 @@ import org.apache.spark.sql.functions.{col, lit, when}
 import org.apache.spark.sql.functions.{min, max}
 import org.apache.spark.sql.Row
 
-
 object saveastble {
   def main(args: Array[String]): Unit = {
     
@@ -56,9 +55,6 @@ val crd_bal_balproductinstance = sqlContext.sql("select * from crd_bal_balproduc
 
 val crd_crm_asset_id_start_dat = crd_bal_balproductinstance.join(crd_cursor_step4,crd_bal_balproductinstance("customer_ref")===crd_cursor_step4("customer_ref")&&(crd_bal_balproductinstance("product_seq")===crd_cursor_step4("product_seq"))).select(crd_bal_balproductinstance("customer_ref"),crd_bal_balproductinstance("product_seq"),crd_bal_balproductinstance("start_dat")).toDF();
 
-
-import org.apache.spark.sql.functions.{min, max}
-import org.apache.spark.sql.Row
 
 val crd_crm_asset_id_start_dat_group=crd_crm_asset_id_start_dat.groupBy("customer_ref","product_seq").agg(max("start_dat").alias("start_dat")).toDF();
 
